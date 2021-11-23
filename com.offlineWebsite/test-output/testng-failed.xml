@@ -7,7 +7,7 @@
         <methods>
           <include name="setup"/>
           <include name="tearDown"/>
-          <include name="checkColumnName"/>
+          <include name="validateAddUserPageTitle"/>
         </methods>
       </class> <!-- com.jbk.test.UserPageTest -->
     </classes>

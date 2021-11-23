@@ -1,5 +1,6 @@
 package com.jbk.test;
 
+
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
@@ -15,6 +16,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.jbk.pages.AddUserPage;
 import com.jbk.pages.DashboardPage;
 import com.jbk.pages.LoginPage;
 import com.jbk.pages.UserPage;
@@ -25,6 +27,7 @@ public class UserPageTest {
 	public LoginPage lp;
 	public DashboardPage dp;
 	public UserPage up;
+	public AddUserPage aup;
 	
 	@BeforeMethod
 	public void setup() {
@@ -151,7 +154,8 @@ public class UserPageTest {
 	
 	@Test(priority=11)
 	public void validateAddUserPageTitle() {
-		Assert.assertEquals(driver.getTitle(), up.clickOnAddUserPage());
+		aup=up.clickOnAddUser();
+		Assert.assertEquals(driver.getTitle(),"JavaByKiran | Add User" );
 	}
 	
 

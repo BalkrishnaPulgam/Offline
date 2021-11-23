@@ -238,7 +238,7 @@ public class UserPage {
 			}
 		}
 
-		ArrayList<String> expList = data("ExcelData/CoursesList.xlsx", "AllData", 1, 4, "Kiran");
+		ArrayList<String> expList = data("ExcelData/CoursesList.xlsx", "UserPage", 1, 4, "Kiran");
 
 		if (actList.equals(expList)) {
 			System.out.println("Kiran having Java/J2EE course");
@@ -266,7 +266,7 @@ public class UserPage {
 			}
 		}
 
-		ArrayList<String> expList = data("ExcelData/CoursesList.xlsx", "AllData", 1, 6, "Sagar");
+		ArrayList<String> expList = data("ExcelData/CoursesList.xlsx", "UserPage", 1, 6, "Sagar");
 
 		if (actList.equals(expList)) {
 			System.out.println("Test case:Passed-Sagar from Punjab");
@@ -306,7 +306,7 @@ public class UserPage {
 	
 	
 	
-	public  AddUserPage clickOnAddUserPage() {
+	public  AddUserPage clickOnAddUser() {
 		driver.findElement(By.xpath("//button[text()='Add User']")).click();
 		return new AddUserPage(driver);
 		}

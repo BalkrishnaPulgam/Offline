@@ -1,25 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="7" total="8" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-11-23T08:49:47 IST" name="Default suite" finished-at="2021-11-23T08:49:57 IST" duration-ms="9800">
+  <suite started-at="2021-11-23T13:14:54 IST" name="Default suite" finished-at="2021-11-23T13:15:48 IST" duration-ms="54553">
     <groups>
     </groups>
-    <test started-at="2021-11-23T08:49:47 IST" name="Default test" finished-at="2021-11-23T08:49:57 IST" duration-ms="9800">
-      <class name="com.jbk.test.UserPageTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.jbk.test.UserPageTest@b62d79]" started-at="2021-11-23T08:49:47 IST" name="setup" finished-at="2021-11-23T08:49:55 IST" duration-ms="7519" status="PASS">
+    <test started-at="2021-11-23T13:14:54 IST" name="Default test" finished-at="2021-11-23T13:15:48 IST" duration-ms="54553">
+      <class name="com.jbk.test.DashboardPageTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:14:54 IST" name="setup" finished-at="2021-11-23T13:15:01 IST" duration-ms="6641" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="validateGmailUsers()[pri:8, instance:com.jbk.test.UserPageTest@b62d79]" started-at="2021-11-23T08:49:55 IST" name="validateGmailUsers" description="verifying that all users having correct gmail" finished-at="2021-11-23T08:49:55 IST" duration-ms="137" status="PASS">
+        <test-method signature="validateHeadingText()[pri:1, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:01 IST" name="validateHeadingText" finished-at="2021-11-23T13:15:01 IST" duration-ms="70" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validateGmailUsers -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.jbk.test.UserPageTest@b62d79]" started-at="2021-11-23T08:49:55 IST" name="tearDown" finished-at="2021-11-23T08:49:57 IST" duration-ms="2077" status="PASS">
+        </test-method> <!-- validateHeadingText -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:01 IST" name="tearDown" finished-at="2021-11-23T13:15:01 IST" duration-ms="245" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.jbk.test.UserPageTest -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:01 IST" name="setup" finished-at="2021-11-23T13:15:06 IST" duration-ms="5364" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="checkMenuList()[pri:2, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:06 IST" name="checkMenuList" finished-at="2021-11-23T13:15:06 IST" duration-ms="142" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkMenuList -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:06 IST" name="tearDown" finished-at="2021-11-23T13:15:07 IST" duration-ms="292" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:07 IST" name="setup" finished-at="2021-11-23T13:15:12 IST" duration-ms="5237" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="checkCourseList()[pri:3, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:12 IST" name="checkCourseList" finished-at="2021-11-23T13:15:13 IST" duration-ms="1144" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkCourseList -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:13 IST" name="tearDown" finished-at="2021-11-23T13:15:13 IST" duration-ms="181" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:13 IST" name="setup" finished-at="2021-11-23T13:15:19 IST" duration-ms="5626" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="checkSubCourseList()[pri:4, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:19 IST" name="checkSubCourseList" finished-at="2021-11-23T13:15:19 IST" duration-ms="215" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkSubCourseList -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:19 IST" name="tearDown" finished-at="2021-11-23T13:15:21 IST" duration-ms="2078" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:21 IST" name="setup" finished-at="2021-11-23T13:15:26 IST" duration-ms="5208" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="checkUsersLinkMenu()[pri:5, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:26 IST" name="checkUsersLinkMenu" finished-at="2021-11-23T13:15:27 IST" duration-ms="328" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkUsersLinkMenu -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:27 IST" name="tearDown" finished-at="2021-11-23T13:15:27 IST" duration-ms="309" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:27 IST" name="setup" finished-at="2021-11-23T13:15:32 IST" duration-ms="5204" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="checkOperatorsLinkMenu()[pri:6, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:32 IST" name="checkOperatorsLinkMenu" finished-at="2021-11-23T13:15:33 IST" duration-ms="342" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkOperatorsLinkMenu -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:33 IST" name="tearDown" finished-at="2021-11-23T13:15:33 IST" duration-ms="197" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:33 IST" name="setup" finished-at="2021-11-23T13:15:38 IST" duration-ms="5470" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="checkDownloadsLinkMenu()[pri:7, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:38 IST" name="checkDownloadsLinkMenu" finished-at="2021-11-23T13:15:39 IST" duration-ms="375" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkDownloadsLinkMenu -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:39 IST" name="tearDown" finished-at="2021-11-23T13:15:41 IST" duration-ms="2073" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:41 IST" name="setup" finished-at="2021-11-23T13:15:46 IST" duration-ms="5375" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="checkLogoutLinkMenu()[pri:8, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:46 IST" name="checkLogoutLinkMenu" finished-at="2021-11-23T13:15:46 IST" duration-ms="284" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkLogoutLinkMenu -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.jbk.test.DashboardPageTest@120f102b]" started-at="2021-11-23T13:15:46 IST" name="tearDown" finished-at="2021-11-23T13:15:48 IST" duration-ms="2061" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.jbk.test.DashboardPageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
