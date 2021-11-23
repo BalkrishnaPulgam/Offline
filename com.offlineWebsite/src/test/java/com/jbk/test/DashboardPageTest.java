@@ -1,14 +1,5 @@
 package com.jbk.test;
 
-import java.io.FileInputStream;
-import java.util.ArrayList;
-
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.apache.poi.util.SystemOutLogger;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -55,68 +46,20 @@ public class DashboardPageTest {
 
 	@Test(priority = 2)
 	public void checkMenuList() {
-		ArrayList<String> actList = dp.verifyMenu();
-
-		ArrayList<String> expList = new ArrayList<String>();
-		expList.add("Dashboard");
-		expList.add("Users");
-		expList.add("Operators");
-		expList.add("Useful Links");
-		expList.add("Downloads");
-		expList.add("Logout");
-		Assert.assertEquals(actList, expList);
+		Assert.assertTrue(dp.verifyMenu());
 	}
 
 	@Test(priority = 3)
 	public void checkCourseList() throws Exception {
-		ArrayList<String> actList = dp.verifyCourses();
-
-		ArrayList<String> excelList = new ArrayList<String>();
-
-		DataFormatter df = new DataFormatter();
-
-		FileInputStream fis = new FileInputStream("ExcelData/CoursesList.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
-		Sheet sh = wb.getSheet("DashboardPage");
-		int count = sh.getLastRowNum();
-
-		for (int i = 1; i <= count; i++) {
-			Cell cell = sh.getRow(i).getCell(0);
-			String text = df.formatCellValue(cell);
-			System.out.println(text);
-			
-			excelList.add(text);
-		}
-
-		Assert.assertEquals(actList, excelList);
+		Assert.assertTrue(dp.verifyCourses());
 
 	}
 
 	@Test(priority = 4)
 	public void checkSubCourseList() throws Exception {
-
-		ArrayList<String> actList = dp.verifySubCourses();
-
-		ArrayList<String> excelList = new ArrayList<String>();
-
-		DataFormatter df = new DataFormatter();
-
-		FileInputStream fis = new FileInputStream("ExcelData/CoursesList.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
-		Sheet sh = wb.getSheet("DashboardPage");
-		int count = sh.getLastRowNum();
-
-		for (int i = 1; i <= count; i++) {
-			Cell cell = sh.getRow(i).getCell(1);
-			String text = df.formatCellValue(cell);
-			System.out.println(text);
-			excelList.add(text);
-		}
-
-		Assert.assertEquals(actList, excelList);
+		Assert.assertTrue(dp.verifySubCourses());
 
 	}
-	
 
 	@Test(priority = 5)
 	public void checkUsersLinkMenu() {

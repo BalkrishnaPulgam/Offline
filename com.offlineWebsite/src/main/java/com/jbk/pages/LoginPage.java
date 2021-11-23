@@ -2,17 +2,21 @@ package com.jbk.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+import com.jbk.objectRepository.LoginOjectRepo;
+
+public class LoginPage extends LoginOjectRepo {
 
 	WebDriver driver;
 
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	public boolean verifyLogo() {
-		Boolean status = driver.findElement(By.tagName("img")).isDisplayed();
+		Boolean status = image.isDisplayed();
 		if (status == true) {
 			System.out.println("image is present");
 			return true;
@@ -42,11 +46,11 @@ public class LoginPage {
 	}
 
 	public DashboardPage verifyValidLogin() {
-		driver.findElement(By.id("email")).clear();
-		driver.findElement(By.id("password")).clear();
-		driver.findElement(By.id("email")).sendKeys("kiran@gmail.com");
-		driver.findElement(By.id("password")).sendKeys("123456");
-		driver.findElement(By.xpath("//button")).click();
+		email.clear();
+		pass.clear();
+		email.sendKeys("kiran@gmail.com");
+		pass.sendKeys("123456");
+		button.click();
 
 		return new DashboardPage(driver);
 
@@ -87,16 +91,16 @@ public class LoginPage {
 		}
 
 	}
-	
+
 	public boolean verifyEmailSuggestion() {
 		driver.findElement(By.id("email")).clear();
 		driver.findElement(By.id("password")).clear();
 		driver.findElement(By.id("email")).sendKeys("kiran@gmail.com1");
 		driver.findElement(By.id("password")).sendKeys("123456");
 		driver.findElement(By.xpath("//button")).click();
-		String act=driver.findElement(By.id("email_error")).getText();
+		String act = driver.findElement(By.id("email_error")).getText();
 		System.out.println("Actual Suggestion :" + act);
-		String exp ="Please enter email as kiran@gmail.com";
+		String exp = "Please enter email as kiran@gmail.com";
 		System.out.println("Expected Suggestion :" + exp);
 
 		if (act.equals(exp)) {

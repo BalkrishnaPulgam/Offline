@@ -48,7 +48,7 @@ public class UserPage {
 
 	}
 
-	public ArrayList<String> VerifyColumnName() {
+	public boolean VerifyColumnName() throws Exception {
 
 		ArrayList<String> actList = new ArrayList<String>();
 
@@ -57,11 +57,35 @@ public class UserPage {
 			String text = webElement.getText();
 			actList.add(text);
 		}
-		return actList;
+
+		ArrayList<String> excelList = new ArrayList<String>();
+
+		DataFormatter df = new DataFormatter();
+
+		FileInputStream fis = new FileInputStream("ExcelData/CoursesList.xlsx");
+		Workbook wb = WorkbookFactory.create(fis);
+		Sheet sh = wb.getSheet("UserPage");
+
+		int count = 8;
+
+		for (int i = 0; i < count; i++) {
+			Cell cell = sh.getRow(0).getCell(i);
+			String text = df.formatCellValue(cell);
+			System.out.println(text);
+
+			excelList.add(text);
+		}
+		if (actText.equals(excelList)) {
+			System.out.println("TestCase passed-Column names are matching.");
+			return true;
+		} else {
+			System.out.println("TestCase failed-Column names are not matching.");
+			return false;
+		}
 
 	}
 
-	public ArrayList<String> verfyTotalNumberOfUser() throws Exception {
+	public boolean verfyTotalNumberOfUser() throws Exception {
 		List<WebElement> userList = driver.findElements(By.xpath("//tr//td[2]"));
 
 		ArrayList<String> actList = new ArrayList<String>();
@@ -72,7 +96,28 @@ public class UserPage {
 			actList.add(text);
 
 		}
-		return actList;
+
+		ArrayList<String> expList = new ArrayList<String>();
+
+		DataFormatter df = new DataFormatter();
+
+		FileInputStream input = new FileInputStream("ExcelData/CoursesList.xlsx");
+		Workbook wb = WorkbookFactory.create(input);
+		Sheet sh = wb.getSheet("UserPage");
+		int count = sh.getLastRowNum();
+
+		for (int i = 1; i <= count; i++) {
+			Cell cell = sh.getRow(i).getCell(1);
+			String text = df.formatCellValue(cell);
+			expList.add(text);
+		}
+		if (actList.equals(expList)) {
+			System.out.println("TestCase passed");
+			return true;
+		} else {
+			System.out.println("TestCase failed");
+			return false;
+		}
 
 	}
 
@@ -188,9 +233,7 @@ public class UserPage {
 		}
 
 	}
-	
-	
-	
+
 	public boolean verifyGmailUsers() throws Exception {
 
 		ArrayList<String> expList = new ArrayList<String>();
@@ -210,7 +253,7 @@ public class UserPage {
 			}
 		}
 		System.out.println("valid gmail users: " + actList);
-	
+
 		if (actList.equals(expList)) {
 			System.out.println("all users having correct gmail");
 			return true;
@@ -220,9 +263,7 @@ public class UserPage {
 		}
 
 	}
-	
-	
-	
+
 	public boolean VerifyKiranCourse() throws Exception {
 
 		List<WebElement> courses = driver.findElements(By.xpath("//tr//td[5]"));
@@ -249,9 +290,7 @@ public class UserPage {
 		}
 
 	}
-	
-	
-	
+
 	public boolean VerifySagarState() throws Exception {
 		List<WebElement> state = driver.findElements(By.xpath("//tr//td[7]"));
 		List<WebElement> users = driver.findElements(By.xpath("//tr//td[2]"));
@@ -277,10 +316,8 @@ public class UserPage {
 		}
 
 	}
-	
-	
-	
-	public ArrayList<String> CheckInvalidMobileUsers() throws Exception {
+
+	public boolean CheckInvalidMobileUsers() throws Exception {
 
 		ArrayList<String> actList = new ArrayList<String>();
 
@@ -297,37 +334,28 @@ public class UserPage {
 				actList.add(text);
 			}
 		}
+		
+		ArrayList<String> expList = new ArrayList<String>();
+		expList.add("Sagar");
+		expList.add("Kimaya");
+		
 		System.out.println("invalid mobile users: " + actList);
-		return actList;
-	
+		
+		if (actList.equals(expList)) {
+			System.out.println("Test case:Passed");
+			return true;
+		} else {
+			System.out.println("Test Case:Failed");
+			return false;
+		}
 
 	}
-	
-	
-	
-	
-	public  AddUserPage clickOnAddUser() {
+
+	public AddUserPage clickOnAddUser() {
 		driver.findElement(By.xpath("//button[text()='Add User']")).click();
 		return new AddUserPage(driver);
-		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}
+
 	public ArrayList<String> data(String filePath, String SheetName, int refColNumber, int OutputColNumber, String txt)
 			throws Exception {
 		ArrayList<String> expList = new ArrayList<String>();

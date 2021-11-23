@@ -37,7 +37,7 @@ public class DashboardPage {
 
 	}
 
-	public ArrayList<String> verifyMenu() {
+	public boolean verifyMenu() {
 
 		ArrayList<String> actList = new ArrayList<String>();
 		List<WebElement> list = driver.findElements(By.xpath("//li//span"));
@@ -46,10 +46,26 @@ public class DashboardPage {
 			actList.add(text);
 
 		}
-		return actList;
+
+		ArrayList<String> expList = new ArrayList<String>();
+		expList.add("Dashboard");
+		expList.add("Users");
+		expList.add("Operators");
+		expList.add("Useful Links");
+		expList.add("Downloads");
+		expList.add("Logout");
+		
+		if (actList.equals(expList)) {
+			System.out.println("Menu list is matching");
+			return true;
+		} else {
+			System.out.println("Menu list is not matching");
+			return false;
+		}
+
 	}
 
-	public ArrayList<String> verifyCourses() {
+	public boolean verifyCourses () throws Exception {
 
 		List<WebElement> list = driver.findElements(By.xpath("//h3"));
 
@@ -59,12 +75,35 @@ public class DashboardPage {
 			String text = webElement.getText();
 			expList.add(text);
 		}
+		
+		ArrayList<String> excelList = new ArrayList<String>();
 
-		return expList;
+		DataFormatter df = new DataFormatter();
+
+	//	FileInputStream fis = new FileInputStream("ExcelData/CoursesList.xlsx");
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\sre\\test\\resources\\CoursesList.xlsx");
+		Workbook wb = WorkbookFactory.create(fis);
+		Sheet sh = wb.getSheet("DashboardPage");
+		int count = sh.getLastRowNum();
+
+		for (int i = 1; i <= count; i++) {
+			Cell cell = sh.getRow(i).getCell(0);
+			String text = df.formatCellValue(cell);
+			System.out.println(text);
+			
+			excelList.add(text);
+		}
+		if (expList.equals(excelList)) {
+			System.out.println("Coruses list is matching");
+			return true;
+		} else {
+			System.out.println("Coruses list is not matching");
+			return false;
+		}
 
 	}
 
-	public ArrayList<String> verifySubCourses() throws Exception {
+	public boolean verifySubCourses() throws Exception {
 
 		ArrayList<String> actList = new ArrayList<String>();
 
@@ -73,7 +112,29 @@ public class DashboardPage {
 			String text = webElement.getText();
 			actList.add(text);
 		}
-		return actList;
+
+		ArrayList<String> excelList = new ArrayList<String>();
+
+		DataFormatter df = new DataFormatter();
+
+		FileInputStream fis = new FileInputStream("ExcelData/CoursesList.xlsx");
+		Workbook wb = WorkbookFactory.create(fis);
+		Sheet sh = wb.getSheet("DashboardPage");
+		int count = sh.getLastRowNum();
+
+		for (int i = 1; i <= count; i++) {
+			Cell cell = sh.getRow(i).getCell(1);
+			String text = df.formatCellValue(cell);
+			System.out.println(text);
+			excelList.add(text);
+		}
+		if (actList.equals(excelList)) {
+			System.out.println("SubCourses is matching");
+			return true;
+		} else {
+			System.out.println("SubCourses is not matching");
+			return false;
+		}
 
 	}
 
@@ -98,7 +159,7 @@ public class DashboardPage {
 		driver.findElement(By.linkText("Downloads")).click();
 		return new DownloadsPage(driver);
 	}
-	
+
 	public LoginPage NavigateLogoutPage() {
 		driver.findElement(By.linkText("Logout")).click();
 		return new LoginPage(driver);
