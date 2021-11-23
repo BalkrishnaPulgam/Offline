@@ -1,36 +1,39 @@
 package com.jbk.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
-public class RegistrationPage {
+import com.jbk.objectRepository.RegistrationObjectRepo;
+
+public class RegistrationPage extends RegistrationObjectRepo{
 	
 	WebDriver driver;
 	
 	public RegistrationPage(WebDriver driver ) {
 		this.driver=driver;
+		PageFactory.initElements(driver, this);
 	}
 	
 	
 	
 	public LoginPage clickOnAlreadyMembership() {
-		driver.findElement(By.partialLinkText("membership")).click();
+		alreadyMemLink.click();
 		return new LoginPage(driver);
 		
 	}
 	
 	
-	public boolean registrationForm(String name,String mobile,String email,String password) {
-		driver.findElement(By.id("name")).clear();
-		driver.findElement(By.id("mobile")).clear();
-		driver.findElement(By.id("email")).clear();
-		driver.findElement(By.id("password")).clear();
+	public boolean registrationForm(String entername,String entermobile,String enteremail,String enterpassword) {
+		name.clear();
+		mobile.clear();
+		email.clear();
+		password.clear();
 		
-		driver.findElement(By.id("name")).sendKeys(name);
-		driver.findElement(By.id("mobile")).sendKeys(mobile);
-		driver.findElement(By.id("email")).sendKeys(email);
-		driver.findElement(By.id("password")).sendKeys(password);
-		driver.findElement(By.xpath("//button")).click();
+		name.sendKeys(entername);
+		mobile.sendKeys(entermobile);
+		email.sendKeys(enteremail);
+		password.sendKeys(enterpassword);
+		registerBtn.click();
 		String act=driver.switchTo().alert().getText();
 		driver.switchTo().alert().accept();
 		String exp="User registered successfully.";
@@ -41,7 +44,6 @@ public class RegistrationPage {
 		}else {
 			System.out.println("User not registered successfully.");
 			return false;
-			
 		}
 		
 	}

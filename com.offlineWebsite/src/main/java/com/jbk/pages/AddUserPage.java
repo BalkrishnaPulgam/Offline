@@ -1,45 +1,47 @@
 package com.jbk.pages;
 
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-public class AddUserPage {
+import com.jbk.objectRepository.AddUserObjectRepo;
+
+public class AddUserPage extends AddUserObjectRepo {
 	
 	public WebDriver driver;
 	
 	public  AddUserPage(WebDriver driver) {
 		this.driver=driver;
+		PageFactory.initElements(driver, this);
 	}
 	
 	
 	public UserPage clickOnCancle() {
-		driver.findElement(By.xpath("//span[text()='Cancel']")).click();
+		addUserCancleBtn.click();
 		return new UserPage(driver);
 	}
 	
 	
-	public boolean VerifyAddUserAlertMsg(String name,String mobile,String gmail,String course,String State,String pass) {
+	public boolean VerifyAddUserAlertMsg(String entername,String entermobile,String entergmail,String entercourse,String enterState,String pass) {
 	
-		driver.findElement(By.id("username")).sendKeys(name);
-		driver.findElement(By.id("mobile")).sendKeys(mobile);
-		driver.findElement(By.id("email")).sendKeys(gmail);
-		driver.findElement(By.id("course")).sendKeys(course);
-		driver.findElement(By.id("Male")).click();
-		WebElement element=driver.findElement(By.xpath("//select"));
+		username.sendKeys(entername);
+		mobile.sendKeys(entermobile);
+		email.sendKeys(entergmail);
+		course.sendKeys(entercourse);
+		Male.click();
+		WebElement element=selectState;
 		Select sel=new Select(element);
-		sel.selectByVisibleText(State);
-		driver.findElement(By.id("password")).sendKeys(pass);
-		driver.findElement(By.id("submit")).click();
+		sel.selectByVisibleText(enterState);
+		password.sendKeys(pass);
+		addUserSubmitBtn.click();
 		Alert a=driver.switchTo().alert();
 		String act=a.getText();
 		a.accept();
 		String exp="User Added Successfully. You can not see added user.";
 		Assert.assertEquals(act, exp);
-		
 		
 		if(act.equals(exp)) {
 			System.out.println("Alert Message is matching");

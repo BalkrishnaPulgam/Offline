@@ -26,13 +26,10 @@ public class RegistrationPageTest {
 		rp=lp.clickOnRegistrationLink();
 	}
 	
-	
-	
 	@AfterMethod
 	public void tearDown() {
 		driver.close();
 	}
-	
 	
 	@Test(priority=1)
 	public void checkAlreadyMembershipLink() {

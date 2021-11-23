@@ -9,20 +9,23 @@ import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-public class UserPage {
+import com.jbk.objectRepository.UserObjectRepo;
+
+public class UserPage extends UserObjectRepo{
 
 	WebDriver driver;
 
 	public UserPage(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	public boolean VerifyHeader() {
-		String actText = driver.findElement(By.xpath("//h1")).getText();
+		String actText = headerText.getText();
 		String expTest = "Users";
 
 		if (actText.equals(expTest)) {
@@ -36,7 +39,7 @@ public class UserPage {
 	}
 
 	public boolean VerifyBoxHeader() {
-		String actText = driver.findElement(By.xpath("//h3")).getText();
+		String actText = boxHeaderText.getText();
 		String expTest = "User List";
 		if (actText.equals(expTest)) {
 			System.out.println("BoxHeader text is matching.");
@@ -52,7 +55,7 @@ public class UserPage {
 
 		ArrayList<String> actList = new ArrayList<String>();
 
-		List<WebElement> actText = driver.findElements(By.xpath("//tr//th"));
+		List<WebElement> actText = columnName;
 		for (WebElement webElement : actText) {
 			String text = webElement.getText();
 			actList.add(text);
@@ -62,7 +65,7 @@ public class UserPage {
 
 		DataFormatter df = new DataFormatter();
 
-		FileInputStream fis = new FileInputStream("ExcelData/CoursesList.xlsx");
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\CoursesList.xlsx");
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sh = wb.getSheet("UserPage");
 
@@ -75,7 +78,7 @@ public class UserPage {
 
 			excelList.add(text);
 		}
-		if (actText.equals(excelList)) {
+		if (actList.equals(excelList)) {
 			System.out.println("TestCase passed-Column names are matching.");
 			return true;
 		} else {
@@ -86,7 +89,7 @@ public class UserPage {
 	}
 
 	public boolean verfyTotalNumberOfUser() throws Exception {
-		List<WebElement> userList = driver.findElements(By.xpath("//tr//td[2]"));
+		List<WebElement> userList = userNames;
 
 		ArrayList<String> actList = new ArrayList<String>();
 
@@ -101,7 +104,7 @@ public class UserPage {
 
 		DataFormatter df = new DataFormatter();
 
-		FileInputStream input = new FileInputStream("ExcelData/CoursesList.xlsx");
+		FileInputStream input = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\CoursesList.xlsx");
 		Workbook wb = WorkbookFactory.create(input);
 		Sheet sh = wb.getSheet("UserPage");
 		int count = sh.getLastRowNum();
@@ -123,8 +126,8 @@ public class UserPage {
 
 	public boolean VerifyMaleUsers() {
 
-		List<WebElement> genderList = driver.findElements(By.xpath("//tr//td[6]"));
-		List<WebElement> userList = driver.findElements(By.xpath("//tr//td[2]"));
+		List<WebElement> genderList = genList;
+		List<WebElement> userList = userNames;
 
 		ArrayList<String> actList = new ArrayList<String>();
 		actList.add("Kiran");
@@ -152,14 +155,14 @@ public class UserPage {
 
 	public boolean VerifyFemaleUsers() throws Exception {
 
-		List<WebElement> genderList = driver.findElements(By.xpath("//tr//td[6]"));
-		List<WebElement> userList = driver.findElements(By.xpath("//tr//td[2]"));
+		List<WebElement> genderList = genList;
+		List<WebElement> userList = userNames;
 
 		ArrayList<String> expList = new ArrayList<String>();
 
 		DataFormatter df = new DataFormatter();
 
-		FileInputStream input = new FileInputStream("ExcelData/CoursesList.xlsx");
+		FileInputStream input =new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\CoursesList.xlsx");
 		Workbook wb = WorkbookFactory.create(input);
 		Sheet sh = wb.getSheet("FemaleUsers");
 		int count = sh.getLastRowNum();
@@ -190,14 +193,14 @@ public class UserPage {
 
 	public boolean VerifyStateUsers() throws Exception {
 
-		List<WebElement> state = driver.findElements(By.xpath("//tr//td[7]"));
-		List<WebElement> users = driver.findElements(By.xpath("//tr//td[2]"));
+		List<WebElement> state = stateNames;
+		List<WebElement> users = userNames;
 
 		ArrayList<String> expList = new ArrayList<String>();
 
 		DataFormatter df = new DataFormatter();
 
-		FileInputStream fis = new FileInputStream("ExcelData/CoursesList.xlsx");
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\CoursesList.xlsx");
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sh = wb.getSheet("UserPage");
 		int count = sh.getLastRowNum();
@@ -244,7 +247,7 @@ public class UserPage {
 
 		ArrayList<String> actList = new ArrayList<String>();
 
-		List<WebElement> gmail = driver.findElements(By.xpath("//tr//td[3]"));
+		List<WebElement> gmail = gmailList;
 
 		for (int i = 0; i < gmail.size(); i++) {
 			String mail = gmail.get(i).getText();
@@ -266,8 +269,8 @@ public class UserPage {
 
 	public boolean VerifyKiranCourse() throws Exception {
 
-		List<WebElement> courses = driver.findElements(By.xpath("//tr//td[5]"));
-		List<WebElement> users = driver.findElements(By.xpath("//tr//td[2]"));
+		List<WebElement> courses = courseList;
+		List<WebElement> users =userNames;
 
 		ArrayList<String> actList = new ArrayList<String>();
 
@@ -279,7 +282,7 @@ public class UserPage {
 			}
 		}
 
-		ArrayList<String> expList = data("ExcelData/CoursesList.xlsx", "UserPage", 1, 4, "Kiran");
+		ArrayList<String> expList = data(System.getProperty("user.dir")+"\\src\\test\\resources\\CoursesList.xlsx", "UserPage", 1, 4, "Kiran");
 
 		if (actList.equals(expList)) {
 			System.out.println("Kiran having Java/J2EE course");
@@ -292,8 +295,8 @@ public class UserPage {
 	}
 
 	public boolean VerifySagarState() throws Exception {
-		List<WebElement> state = driver.findElements(By.xpath("//tr//td[7]"));
-		List<WebElement> users = driver.findElements(By.xpath("//tr//td[2]"));
+		List<WebElement> state = stateNames;
+		List<WebElement> users = userNames;
 
 		ArrayList<String> actList = new ArrayList<String>();
 
@@ -305,7 +308,7 @@ public class UserPage {
 			}
 		}
 
-		ArrayList<String> expList = data("ExcelData/CoursesList.xlsx", "UserPage", 1, 6, "Sagar");
+		ArrayList<String> expList = data(System.getProperty("user.dir")+"\\src\\test\\resources\\CoursesList.xlsx", "UserPage", 1, 6, "Sagar");
 
 		if (actList.equals(expList)) {
 			System.out.println("Test case:Passed-Sagar from Punjab");
@@ -321,8 +324,8 @@ public class UserPage {
 
 		ArrayList<String> actList = new ArrayList<String>();
 
-		List<WebElement> users = driver.findElements(By.xpath("//tr//td[2]"));
-		List<WebElement> mobile = driver.findElements(By.xpath("//tr//td[4]"));
+		List<WebElement> users = userNames;
+		List<WebElement> mobile = mobList;
 
 		for (int i = 0; i < mobile.size(); i++) {
 			String mob = mobile.get(i).getText();
@@ -352,7 +355,7 @@ public class UserPage {
 	}
 
 	public AddUserPage clickOnAddUser() {
-		driver.findElement(By.xpath("//button[text()='Add User']")).click();
+		addUserBtn.click();
 		return new AddUserPage(driver);
 	}
 

@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.jbk.objectRepository.LoginOjectRepo;
+import com.jbk.objectRepository.LoginObjectRepo;
 
-public class LoginPage extends LoginOjectRepo {
+public class LoginPage extends LoginObjectRepo {
 
 	WebDriver driver;
 
@@ -27,7 +27,7 @@ public class LoginPage extends LoginOjectRepo {
 
 	public boolean verifyingHeadingText() {
 
-		String act = driver.findElement(By.tagName("b")).getText();
+		String act = headingText.getText();
 		System.out.println("Actual: " + act);
 		String exp = "Java By Kiran";
 		System.out.println("Expected: " + exp);
@@ -57,7 +57,7 @@ public class LoginPage extends LoginOjectRepo {
 	}
 
 	public boolean verifyCoursesText() {
-		String act = driver.findElement(By.tagName("h4")).getText();
+		String act = courseText.getText();
 		System.out.println("Actual: " + act);
 		String exp = "JAVA | SELENIUM | PYTHON";
 		System.out.println("Expected: " + exp);
@@ -72,12 +72,12 @@ public class LoginPage extends LoginOjectRepo {
 	}
 
 	public boolean verifyPasswordSuggestion() {
-		driver.findElement(By.id("email")).clear();
-		driver.findElement(By.id("password")).clear();
-		driver.findElement(By.id("email")).sendKeys("kiran@gmail.com");
-		driver.findElement(By.id("password")).sendKeys("12345");
-		driver.findElement(By.xpath("//button")).click();
-		String act = driver.findElement(By.id("password_error")).getText();
+		email.clear();
+		pass.clear();
+		email.sendKeys("kiran@gmail.com");
+		pass.sendKeys("12345");
+		button.click();
+		String act = passError.getText();
 		System.out.println("Actual Suggestion :" + act);
 		String exp = "Please enter password 123456";
 		System.out.println("Expected Suggestion :" + exp);
@@ -93,12 +93,12 @@ public class LoginPage extends LoginOjectRepo {
 	}
 
 	public boolean verifyEmailSuggestion() {
-		driver.findElement(By.id("email")).clear();
-		driver.findElement(By.id("password")).clear();
-		driver.findElement(By.id("email")).sendKeys("kiran@gmail.com1");
-		driver.findElement(By.id("password")).sendKeys("123456");
-		driver.findElement(By.xpath("//button")).click();
-		String act = driver.findElement(By.id("email_error")).getText();
+		email.clear();
+		pass.clear();
+		email.sendKeys("kiran@gmail.com1");
+		pass.sendKeys("123456");
+		button.click();
+		String act = emailError.getText();
 		System.out.println("Actual Suggestion :" + act);
 		String exp = "Please enter email as kiran@gmail.com";
 		System.out.println("Expected Suggestion :" + exp);
