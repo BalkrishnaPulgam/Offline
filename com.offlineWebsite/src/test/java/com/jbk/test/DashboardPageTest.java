@@ -2,19 +2,19 @@ package com.jbk.test;
 
 import org.openqa.selenium.WebDriver;
 
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.base.BaseClass;
 import com.jbk.pages.DashboardPage;
 import com.jbk.pages.DownloadsPage;
 import com.jbk.pages.LoginPage;
 import com.jbk.pages.OperatorsPage;
 import com.jbk.pages.UserPage;
 
-public class DashboardPageTest {
+public class DashboardPageTest extends BaseClass{
 
 	public WebDriver driver;
 	public LoginPage lp;
@@ -25,12 +25,8 @@ public class DashboardPageTest {
 
 	@BeforeMethod
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver", "D:/chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("file:///E:/Selenium/Offline%20Website/Offline%20Website/index.html");
-		lp = new LoginPage(driver);
-		dp = lp.verifyValidLogin();
-
+		driver=initialization();
+		dp = loadLoginPage().verifyValidLogin();
 	}
 
 	@AfterMethod

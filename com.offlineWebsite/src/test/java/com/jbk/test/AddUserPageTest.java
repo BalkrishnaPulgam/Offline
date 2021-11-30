@@ -1,17 +1,17 @@
 package com.jbk.test;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.base.BaseClass;
 import com.jbk.pages.AddUserPage;
 import com.jbk.pages.LoginPage;
 import com.jbk.pages.UserPage;
 
-public class AddUserPageTest {
+public class AddUserPageTest extends BaseClass{
 
 	public WebDriver driver;
 	public LoginPage lp;
@@ -20,11 +20,8 @@ public class AddUserPageTest {
 
 	@BeforeMethod
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver", "D:/chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("file:///E:/Selenium/Offline%20Website/Offline%20Website/index.html");
-		lp = new LoginPage(driver);
-		aup = lp.verifyValidLogin().NavigateUsersPage().clickOnAddUser();
+		driver=initialization();
+		aup = loadLoginPage().verifyValidLogin().NavigateUsersPage().clickOnAddUser();
 
 	}
 

@@ -1,29 +1,28 @@
 package com.jbk.test;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.base.BaseClass;
 import com.jbk.pages.DashboardPage;
 import com.jbk.pages.LoginPage;
 import com.jbk.pages.RegistrationPage;
 
-public class LoginTest {
+public class LoginTest extends BaseClass {
 
-	WebDriver driver;
+	public WebDriver driver;
 	public LoginPage lp;
 	public DashboardPage dp;
 	public RegistrationPage rp;
 
 	@BeforeMethod
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver", "D:/chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("file:///E:/Selenium/Offline%20Website/Offline%20Website/index.html");
-		lp = new LoginPage(driver);
+		driver = initialization();
+		lp = loadLoginPage();
+
 	}
 
 	@AfterMethod
@@ -52,7 +51,7 @@ public class LoginTest {
 	public void validatePasswordSuggestion() {
 		Assert.assertTrue(lp.verifyPasswordSuggestion());
 	}
-	
+
 	@Test(priority = 5)
 	public void validateEmailSuggestion() {
 		Assert.assertTrue(lp.verifyEmailSuggestion());

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="Test(failed)" parallel="methods">
+    <classes>
+      <class name="com.jbk.test.OperatorsPageTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="techFaculties"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.jbk.test.OperatorsPageTest -->
+      <class name="com.jbk.test.UserPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="InvalidMobileUsers"/>
+          <include name="validateMaleUsers"/>
+          <include name="validateBoxHeader"/>
+          <include name="validateTotalNumberOfUsers"/>
+          <include name="validateFemaleUsers"/>
+          <include name="validateSagarState"/>
+          <include name="validateStateUsers"/>
+          <include name="checkColumnName"/>
+          <include name="validateGmailUsers"/>
+          <include name="tearDown"/>
+          <include name="validateAddUserPageTitle"/>
+          <include name="validateKiranCourse"/>
+        </methods>
+      </class> <!-- com.jbk.test.UserPageTest -->
+      <class name="com.jbk.test.DashboardPageTest">
+        <methods>
+          <include name="checkDownloadsLinkMenu"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="checkLogoutLinkMenu"/>
+        </methods>
+      </class> <!-- com.jbk.test.DashboardPageTest -->
+      <class name="com.jbk.test.AddUserPageTest">
+        <methods>
+          <include name="VerifyAddUserAlertMsg"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="validateTitleAfterClickOnCancle"/>
+        </methods>
+      </class> <!-- com.jbk.test.AddUserPageTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
